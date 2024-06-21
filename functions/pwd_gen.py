@@ -32,7 +32,7 @@ def pwdgen(length=8, special=True, lower=True, upper=True, digits=True, special_
     
     # Checks length of list and if below, adds a random assortment of characters
     while len(pwd_list) < length:
-        choice = secrets.SystemRandom().randint(1, 3)
+        choice = secrets.SystemRandom().randint(1, 4)
 
         if lower and choice == 1:
             pwd_list.append(secrets.choice(string.ascii_lowercase))
@@ -43,6 +43,8 @@ def pwdgen(length=8, special=True, lower=True, upper=True, digits=True, special_
                 pwd_list.append(secrets.choice(special_chars))
             else:
                 pwd_list.append(secrets.choice(chars))
+        elif digits and choice == 4:
+            pwd_list.append(secrets.choice(string.digits))
 
     # Shuffles pwd_list
     secrets.SystemRandom().shuffle(pwd_list)
